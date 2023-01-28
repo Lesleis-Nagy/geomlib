@@ -32,7 +32,7 @@ TEST_CASE("Test edge_length() function for 'multiprecision' type.", "Vector3D ge
     mpreal actual_d1 = edge_length(u, v);
     mpreal actual_d2 = edge_length(v, u);
 
-#ifdef TEST_DEBUG_MESSAGES
+#ifdef DEBUG_MESSAGES
     std::cout.precision(50);
     std::cout << "+---------------------------------------------------------------------------+" << std::endl;
     std::cout << "|                        edge length (multiprecision)                       |" << std::endl;
@@ -45,7 +45,7 @@ TEST_CASE("Test edge_length() function for 'multiprecision' type.", "Vector3D ge
     std::cout << "| reg-eps         | " << Vec3D::eps()                << string( 1, ' ') << "|" << std::endl;
     std::cout << "| reg-eps squared | " << Vec3D::eps_squared()        << string( 1, ' ') << "|" << std::endl;
     std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
-#endif // TEST_DEBUG_MESSAGES
+#endif // DEBUG_MESSAGES
 
     REQUIRE(abs(actual_d1 - expected) < eps );
     REQUIRE(abs(actual_d2 - expected) < eps );
@@ -72,7 +72,7 @@ TEST_CASE("Test edge_center() function for 'multiprecision' type.", "Vector3D ge
 
     mpreal eps = 1E-40;
 
-#ifdef TEST_DEBUG_MESSAGES
+#ifdef DEBUG_MESSAGES
     std::cout.precision(50);
     std::cout << "+---------------------------------------------------------------------------+" << std::endl;
     std::cout << "|                       edge center (multiprecision)                        |" << std::endl;
@@ -86,7 +86,7 @@ TEST_CASE("Test edge_center() function for 'multiprecision' type.", "Vector3D ge
     std::cout << "| expected z      | " << expected.z()                << string(53, ' ') << "|" << std::endl;
     std::cout << "| actual z        | " << actual.z()                  << string(53, ' ') << "|" << std::endl;
     std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
-#endif // TEST_DEBUG_MESSAGES
+#endif // DEBUG_MESSAGES
 
     REQUIRE( abs(expected.x() - actual.x()) < eps );
     REQUIRE( abs(expected.y() - actual.y()) < eps );
@@ -114,7 +114,7 @@ TEST_CASE("Test edge_orientation() function for 'multiprecision' type.", "Vector
 
     mpreal eps = 1E-40;
 
-#ifdef TEST_DEBUG_MESSAGES
+#ifdef DEBUG_MESSAGES
     std::cout.precision(50);
     std::cout << "+---------------------------------------------------------------------------+" << std::endl;
     std::cout << "|                    edge orientation (multiprecision)                      |" << std::endl;
@@ -128,7 +128,7 @@ TEST_CASE("Test edge_orientation() function for 'multiprecision' type.", "Vector
     std::cout << "| expected z      | " << expected.z()                << string( 4, ' ') << "|" << std::endl;
     std::cout << "| actual z        | " << actual.z()                  << string( 4, ' ') << "|" << std::endl;
     std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
-#endif // TEST_DEBUG_MESSAGES
+#endif // DEBUG_MESSAGES
 
     REQUIRE( abs(expected.x() - actual.x()) < eps );
     REQUIRE( abs(expected.y() - actual.y()) < eps );
@@ -156,7 +156,7 @@ TEST_CASE("Test triangle_normal() function for 'multiprecision' type.", "Vector3
     Vec3D expected(1.0/mpfr::sqrt(3.0), 1.0/mpfr::sqrt(3.0), 1.0/mpfr::sqrt(3.0));
     Vec3D actual = triangle_normal(r1, r2, r3);
 
-#ifdef TEST_DEBUG_MESSAGES
+#ifdef DEBUG_MESSAGES
     std::cout.precision(50);
     std::cout << "+---------------------------------------------------------------------------+" << std::endl;
     std::cout << "|                     triangle normal (multiprecision)                      |" << std::endl;
@@ -170,7 +170,7 @@ TEST_CASE("Test triangle_normal() function for 'multiprecision' type.", "Vector3
     std::cout << "| expected z      | " << expected.z()                << string( 4, ' ') << "|" << std::endl;
     std::cout << "| actual z        | " << actual.z()                  << string( 4, ' ') << "|" << std::endl;
     std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
-#endif // TEST_DEBUG_MESSAGES
+#endif // DEBUG_MESSAGES
 
     REQUIRE( abs(expected.x() - actual.x()) < eps );
     REQUIRE( abs(expected.y() - actual.y()) < eps );
@@ -198,7 +198,7 @@ TEST_CASE("Test triangle_center() function for 'multiprecision' type.", "Vector3
     Vec3D expected(mpreal(1.0)/mpreal(3.0), mpreal(1.0)/mpreal(3.0), mpreal(1.0)/mpreal(3.0));
     Vec3D actual = triangle_center(r1, r2, r3);
 
-#ifdef TEST_DEBUG_MESSAGES
+#ifdef DEBUG_MESSAGES
     std::cout.precision(50);
     std::cout << "+---------------------------------------------------------------------------+" << std::endl;
     std::cout << "|                     triangle center (multiprecision)                      |" << std::endl;
@@ -212,7 +212,7 @@ TEST_CASE("Test triangle_center() function for 'multiprecision' type.", "Vector3
     std::cout << "| expected z      | " << expected.z()                << string( 4, ' ') << "|" << std::endl;
     std::cout << "| actual z        | " << actual.z()                  << string( 4, ' ') << "|" << std::endl;
     std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
-#endif // TEST_DEBUG_MESSAGES
+#endif // DEBUG_MESSAGES
 
     REQUIRE( abs(expected.x() - actual.x()) < eps );
     REQUIRE( abs(expected.y() - actual.y()) < eps );
@@ -280,7 +280,7 @@ TEST_CASE("Test tetrahedron_center() function for 'multiprecision' type.", "Vect
     Vec3D expected(mpreal(1.0)/mpreal(2.0), mpreal(1.0)/mpreal(2.0), mpreal(1.0)/mpreal(2.0));
     Vec3D actual = tetrahedron_center(r1, r2, r3, r4);
 
-#ifdef TEST_DEBUG_MESSAGES
+#ifdef DEBUG_MESSAGES
     std::cout.precision(50);
     std::cout << "+---------------------------------------------------------------------------+" << std::endl;
     std::cout << "|                  tetrahedron center (multiprecision)                      |" << std::endl;
@@ -294,7 +294,7 @@ TEST_CASE("Test tetrahedron_center() function for 'multiprecision' type.", "Vect
     std::cout << "| expected z      | " << expected.z()                << string( 4, ' ') << "|" << std::endl;
     std::cout << "| actual z        | " << actual.z()                  << string( 4, ' ') << "|" << std::endl;
     std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
-#endif // TEST_DEBUG_MESSAGES
+#endif // DEBUG_MESSAGES
 
     REQUIRE( abs(expected.x() - actual.x()) < eps );
     REQUIRE( abs(expected.y() - actual.y()) < eps );
