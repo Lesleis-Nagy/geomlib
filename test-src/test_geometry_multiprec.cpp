@@ -219,3 +219,42 @@ TEST_CASE("Test triangle_center() function for 'multiprecision' type.", "Vector3
     REQUIRE( abs(expected.z() - actual.z()) < eps );
 
 }
+
+TEST_CASE("Test triangle_area() function for 'multiprecision' type.", "Vector3D geometry") {
+
+    using namespace org::lesleisnagy::geomlib;
+
+    using std::string;
+    using mpfr::mpreal;
+
+    using Vec3D = Vector3D<mpreal>;
+    const int digits = 50;
+    mpreal::set_default_prec(mpfr::digits2bits(digits));
+
+    Vec3D::set_eps(1E-20);
+    Vec3D r1(0.0, 0.0, 0.0);
+    Vec3D r2(1.0, 0.0, 0.0);
+    Vec3D r3(0.0, 1.0, 0.0);
+
+    mpreal expected = 0.5;
+    mpreal actual = triangle_area(r1, r2, r3);
+
+    mpreal eps = 1E-20;
+
+#ifdef DEBUG_MESSAGES
+    std::cout.precision(50);
+    std::cout << "+---------------------------------------------------------------------------+" << std::endl;
+    std::cout << "|                          triangle area (double)                           |" << std::endl;
+    std::cout << "+---------------------------------------------------------------------------+" << std::endl;
+    std::cout << "| variable        | value                                                   |" << std::endl;
+    std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
+    std::cout << "| expected area   | " << expected                    << string(11, ' ') << "|" << std::endl;
+    std::cout << "| actual area     | " << actual                      << string( 5, ' ') << "|" << std::endl;
+    std::cout << "| reg-eps         | " << Vec3D::eps()                << string( 1, ' ') << "|" << std::endl;
+    std::cout << "| reg-eps squared | " << Vec3D::eps_squared()        << string( 1, ' ') << "|" << std::endl;
+    std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
+#endif // DEBUG_MESSAGES
+
+    REQUIRE( fabs(expected - actual) < eps );
+
+}
