@@ -1,7 +1,7 @@
 # Example test.
 
 #####################################################################################################################
-# Double precision tests.                                                                                           #
+# Double precision tests - these are always generated.                                                              #
 #####################################################################################################################
 
 add_executable(test_vector3d_dblprec test_vector3d_dblprec.cpp)
@@ -18,7 +18,7 @@ target_include_directories(test_geometry_dblprec
 add_test(NAME test_geometry_dblprec COMMAND test_geometry_dblprec)
 
 #####################################################################################################################
-# Multiprecision precision tests.                                                                                   #
+# Multiprecision precision tests - these are ONLY generated if the MULTIPRECISION cmake flag is enabled.            #
 #####################################################################################################################
 if (MULTIPRECISION)
 
