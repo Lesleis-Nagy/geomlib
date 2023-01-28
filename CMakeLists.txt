@@ -47,6 +47,8 @@ if (${TESTS})
 
     message(STATUS "Building tests.")
 
+    enable_testing()
+
     set(GEOMLIB_TEST_SRC_DIR "${CMAKE_SOURCE_DIR}/test-src")
     set(GEOMLIB_TEST_INCLUDE_DIR "${CMAKE_SOURCE_DIR/test-include}")
     set(CATCH_INCLUDE_DIR "${GEOMLIB_THIRD_PARTY_DIR}/catch2-v2.13.9/include")
