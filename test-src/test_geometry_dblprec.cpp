@@ -234,3 +234,43 @@ TEST_CASE("Test triangle_area() function for 'double' type.", "Vector3D geometry
     REQUIRE( fabs(expected - actual) < eps );
 
 }
+
+TEST_CASE("Test tetrahedron_center() function for 'double' type.", "Vector3D geometry") {
+
+    using namespace org::lesleisnagy::geomlib;
+
+    using std::string;
+    using Vec3D = Vector3D<double>;
+
+    Vec3D::set_eps(1E-7);
+    Vec3D r1(1.0, 0.0, 0.0);
+    Vec3D r2(0.0, 1.0, 0.0);
+    Vec3D r3(0.0, 0.0, 1.0);
+    Vec3D r4(1.0, 1.0, 1.0);
+
+    Vec3D expected(1.0/2.0, 1.0/2.0, 1.0/2.0);
+    Vec3D actual = tetrahedron_center(r1, r2, r3, r4);
+
+    double eps = 1E-14;
+
+#ifdef DEBUG_MESSAGES
+    std::cout.precision(50);
+    std::cout << "+---------------------------------------------------------------------------+" << std::endl;
+    std::cout << "|                      tetrahedron center (double)                          |" << std::endl;
+    std::cout << "+---------------------------------------------------------------------------+" << std::endl;
+    std::cout << "| variable        | value                                                   |" << std::endl;
+    std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
+    std::cout << "| expected x      | " << expected.x()                << string( 4, ' ') << "|" << std::endl;
+    std::cout << "| actual x        | " << actual.x()                  << string( 4, ' ') << "|" << std::endl;
+    std::cout << "| expected y      | " << expected.y()                << string( 4, ' ') << "|" << std::endl;
+    std::cout << "| actual y        | " << actual.y()                  << string( 4, ' ') << "|" << std::endl;
+    std::cout << "| expected z      | " << expected.z()                << string( 4, ' ') << "|" << std::endl;
+    std::cout << "| actual z        | " << actual.z()                  << string( 4, ' ') << "|" << std::endl;
+    std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
+#endif // DEBUG_MESSAGES
+
+    REQUIRE( fabs(expected.x() - actual.x()) < eps );
+    REQUIRE( fabs(expected.y() - actual.y()) < eps );
+    REQUIRE( fabs(expected.z() - actual.z()) < eps );
+
+}
