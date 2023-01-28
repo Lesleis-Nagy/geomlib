@@ -123,18 +123,15 @@ namespace org::lesleisnagy::geomlib {
     Real tetrahedron_volume(const Vector3D<Real> &r1, const Vector3D<Real> &r2,
                             const Vector3D<Real> &r3, const Vector3D<Real> &r4) {
 
-        Real det = r1.y() * r2.z() * r3.x() - r1.z() * r2.y() * r3.x() +
-                   r1.z() * r2.x() * r3.y() - r1.x() * r2.z() * r3.y() -
-                   r1.y() * r2.x() * r3.z() + r1.x() * r2.y() * r3.z() +
-                   r1.z() * r2.y() * r4.x() - r1.y() * r2.z() * r4.x() -
-                   r1.z() * r3.y() * r4.x() + r2.z() * r3.y() * r4.x() +
-                   r1.y() * r3.z() * r4.x() - r2.y() * r3.z() * r4.x() -
-                   r1.z() * r2.x() * r4.y() + r1.x() * r2.z() * r4.y() +
-                   r1.z() * r3.x() * r4.y() - r2.z() * r3.x() * r4.y() -
-                   r1.x() * r3.z() * r4.y() + r2.x() * r3.z() * r4.y() +
-                   r1.y() * r2.x() * r4.z() - r1.x() * r2.y() * r4.z() -
-                   r1.y() * r3.x() * r4.z() + r2.y() * r3.x() * r4.z() +
-                   r1.x() * r3.y() * r4.z() - r2.x() * r3.y() * r4.z();
+        Real det = r1.z()*r2.y()*r3.x() - r1.y()*r2.z()*r3.x() - r1.z()*r2.x()*r3.y() +
+                   r1.x()*r2.z()*r3.y() + r1.y()*r2.x()*r3.z() - r1.x()*r2.y()*r3.z() -
+                   r1.z()*r2.y()*r4.x() + r1.y()*r2.z()*r4.x() + r1.z()*r3.y()*r4.x() -
+                   r2.z()*r3.y()*r4.x() - r1.y()*r3.z()*r4.x() + r2.y()*r3.z()*r4.x() +
+                   r1.z()*r2.x()*r4.y() - r1.x()*r2.z()*r4.y() - r1.z()*r3.x()*r4.y() +
+                   r2.z()*r3.x()*r4.y() + r1.x()*r3.z()*r4.y() - r2.x()*r3.z()*r4.y() -
+                   r1.y()*r2.x()*r4.z() + r1.x()*r2.y()*r4.z() + r1.y()*r3.x()*r4.z() -
+                   r2.y()*r3.x()*r4.z() - r1.x()*r3.y()*r4.z() + r2.x()*r3.y()*r4.z()
+                   ;
 
         return det / Real(6);
 
