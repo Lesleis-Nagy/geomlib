@@ -199,3 +199,38 @@ TEST_CASE("Test triangle_center() function for 'double' type.", "Vector3D geomet
     REQUIRE( fabs(expected.z() - actual.z()) < eps );
 
 }
+
+TEST_CASE("Test triangle_area() function for 'double' type.", "Vector3D geometry") {
+
+    using namespace org::lesleisnagy::geomlib;
+
+    using std::string;
+    using Vec3D = Vector3D<double>;
+
+    Vec3D::set_eps(1E-7);
+    Vec3D r1(0.0, 0.0, 0.0);
+    Vec3D r2(1.0, 0.0, 0.0);
+    Vec3D r3(0.0, 1.0, 0.0);
+
+    double expected = 0.5;
+    double actual = triangle_area(r1, r2, r3);
+
+    double eps = 1E-14;
+
+#ifdef DEBUG_MESSAGES
+    std::cout.precision(50);
+    std::cout << "+---------------------------------------------------------------------------+" << std::endl;
+    std::cout << "|                          triangle area (double)                           |" << std::endl;
+    std::cout << "+---------------------------------------------------------------------------+" << std::endl;
+    std::cout << "| variable        | value                                                   |" << std::endl;
+    std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
+    std::cout << "| expected area   | " << expected                    << string(11, ' ') << "|" << std::endl;
+    std::cout << "| actual area     | " << actual                      << string( 5, ' ') << "|" << std::endl;
+    std::cout << "| reg-eps         | " << Vec3D::eps()                << string( 1, ' ') << "|" << std::endl;
+    std::cout << "| reg-eps squared | " << Vec3D::eps_squared()        << string( 1, ' ') << "|" << std::endl;
+    std::cout << "+-----------------+---------------------------------------------------------+" << std::endl;
+#endif // DEBUG_MESSAGES
+
+    REQUIRE( fabs(expected - actual) < eps );
+
+}
